@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfdk2xmwtlw56"]
+
+[ext_resource type="Texture2D" uid="uid://iii4uiq3rafl" path="res://assets/background.png" id="1_1lqtg"]
+[ext_resource type="PackedScene" uid="uid://8n6xyb62alky" path="res://entities/Player.tscn" id="1_scu8l"]
+[ext_resource type="Texture2D" uid="uid://dts5ylbc1wl8w" path="res://assets/floor.png" id="2_8rhgr"]
+
+[node name="Main" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_1lqtg")
+
+[node name="Floor" type="TextureRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_8rhgr")
+
+[node name="Player" parent="." instance=ExtResource("1_scu8l")]
+position = Vector2(589, 550)
