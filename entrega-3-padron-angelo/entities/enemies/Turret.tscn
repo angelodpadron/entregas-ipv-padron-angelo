@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvkvot1466y4x"]
+
+[ext_resource type="Texture2D" uid="uid://bfap7ir4by5b1" path="res://assets/turret.png" id="1_rlbdr"]
+[ext_resource type="Script" path="res://entities/enemies/Turret.gd" id="2_t4tsb"]
+
+[node name="Turret" type="Sprite2D"]
+texture = ExtResource("1_rlbdr")
+script = ExtResource("2_t4tsb")
+
+[node name="FirePosition" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

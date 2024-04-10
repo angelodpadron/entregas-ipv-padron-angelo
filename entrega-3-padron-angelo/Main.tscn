@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfdk2xmwtlw56"]
+[gd_scene load_steps=7 format=3 uid="uid://cfdk2xmwtlw56"]
 
 [ext_resource type="Texture2D" uid="uid://iii4uiq3rafl" path="res://assets/background.png" id="1_1lqtg"]
 [ext_resource type="Script" path="res://Main.gd" id="1_iign0"]
 [ext_resource type="PackedScene" uid="uid://8n6xyb62alky" path="res://entities/player/Player.tscn" id="1_scu8l"]
 [ext_resource type="Texture2D" uid="uid://dts5ylbc1wl8w" path="res://assets/floor.png" id="2_8rhgr"]
+[ext_resource type="PackedScene" uid="uid://cvkvot1466y4x" path="res://entities/enemies/Turret.tscn" id="5_16a0r"]
+[ext_resource type="PackedScene" uid="uid://boov4uqkx8uvh" path="res://entities/enemies/Projectile.tscn" id="6_34uh4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_iign0")
@@ -26,3 +28,19 @@ texture = ExtResource("2_8rhgr")
 
 [node name="Player" parent="." instance=ExtResource("1_scu8l")]
 position = Vector2(589, 550)
+
+[node name="Turret" parent="." instance=ExtResource("5_16a0r")]
+position = Vector2(228, 243)
+projectile_scene = ExtResource("6_34uh4")
+
+[node name="Turret2" parent="." instance=ExtResource("5_16a0r")]
+position = Vector2(448, 160)
+projectile_scene = ExtResource("6_34uh4")
+
+[node name="Turret3" parent="." instance=ExtResource("5_16a0r")]
+position = Vector2(917, 248)
+projectile_scene = ExtResource("6_34uh4")
+
+[node name="Turret4" parent="." instance=ExtResource("5_16a0r")]
+position = Vector2(689, 145)
+projectile_scene = ExtResource("6_34uh4")

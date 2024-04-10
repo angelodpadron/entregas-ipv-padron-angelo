@@ -3,7 +3,8 @@ class_name Projectile
 
 signal delete_requested(projectile)
 
-@export var speed:float
+@export 
+var speed:float
 
 # Debe estar normalizado
 var direction:Vector2

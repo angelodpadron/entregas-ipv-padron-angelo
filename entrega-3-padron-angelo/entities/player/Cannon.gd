@@ -1,7 +1,9 @@
 extends Sprite2D
 
-@onready var fire_position:Marker2D = $FirePosition	 # Tambien se puede utilizar := para inferir el tipo a partir del nodo
-@export var projectile_scene:PackedScene
+@onready 
+var fire_position:Marker2D = $FirePosition	 # Tambien se puede utilizar := para inferir el tipo a partir del nodo
+@export 
+var projectile_scene:PackedScene
 
 var projectile_container:Node
 

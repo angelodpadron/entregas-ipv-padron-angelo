@@ -1,7 +1,8 @@
 extends Sprite2D
 
 var speed:float = 200
-@onready var cannon:Sprite2D = $Cannon # O(log n)
+@onready 
+var cannon:Sprite2D = $Cannon # O(log n)
 var projectile_container:Node
 
 func set_projectile_container(container:Node):

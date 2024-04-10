@@ -5,8 +5,8 @@
 
 [node name="Projectile" instance=ExtResource("1_jsa2y")]
 texture = ExtResource("2_mtp3k")
-speed = 100.0
+speed = 500.0
 
 [node name="Timer" parent="." index="0"]
+wait_time = 2.0
 one_shot = true
-autostart = true
