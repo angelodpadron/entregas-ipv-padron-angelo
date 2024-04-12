@@ -5,17 +5,30 @@ extends Sprite2D
 
 @export var projectile_scene:PackedScene
 
-var player
-var projectile_container
+var projectile_container:Node
+var target:Node2D
 
-func initialize(container, turret_pos, player, projectile_container):
+func _ready():
+	fire_timer.timeout.connect(fire_at_player)
+	
+func initialize(container, turret_pos):
 	container.add_child(self)
 	global_position = turret_pos
-	self.player = player
-	self.projectile_container = projectile_container
-	fire_timer.timeout.connect(fire_at_player)
-	fire_timer.start()
+	self.projectile_container = container
+
 
 func fire_at_player():
-	var proj_instance = projectile_scene.instantiate()
-	proj_instance.initialize(projectile_container, fire_position.global_position, fire_position.global_position.direction_to(player.global_position))
+	var projectile_instance = projectile_scene.instantiate()
+	projectile_instance.initialize(projectile_container, fire_position.global_position, fire_position.global_position.direction_to(target.global_position))
+
+
+func _on_detection_area_body_entered(body):
+	if self.target == null:
+		self.target = body
+		fire_timer.start()
+	
+
+func _on_detection_area_body_exited(body):
+	if self.target == body:
+		self.target = null
+		fire_timer.stop()

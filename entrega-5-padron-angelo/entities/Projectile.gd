@@ -14,12 +14,12 @@ func initialize(container, spawn_position:Vector2, direction:Vector2):
 	lifetime_timer.start()
 
 func _physics_process(delta):
-	position += direction * VELOCITY * delta
-	
-	# Necesitamos que desaparezca en algun momento
-	
-	# Si está fuera de la pantalla
-	var visible_rect:Rect2 = get_viewport().get_visible_rect()
+	position += direction * VELOCITY * delta	
+	_on_out_of_view()	
+
+# Si está fuera de la pantalla
+func _on_out_of_view():
+	var visible_rect:Rect2 = get_viewport().get_visible_rect()	
 	if !visible_rect.has_point(global_position):
 		_remove()
 

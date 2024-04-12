@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsovfx350hnlv"]
+[gd_scene load_steps=8 format=3 uid="uid://bsovfx350hnlv"]
 
 [ext_resource type="PackedScene" uid="uid://0afl7sxtmrjx" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://yrqui11aqlbf" path="res://assets/textures/background.png" id="2"]
 [ext_resource type="Script" path="res://Main.gd" id="3"]
-[ext_resource type="PackedScene" path="res://entities/enemies/Turret.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://djws683a0jw67" path="res://entities/enemies/Turret.tscn" id="4"]
 [ext_resource type="Script" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://pxy47hyncwqg" path="res://entities/world/Floor.tscn" id="6_11tax"]
+[ext_resource type="PackedScene" path="res://entities/world/Cube.tscn" id="7_pqd48"]
 
 [node name="Main" type="Node"]
 script = ExtResource("3")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,14 +27,31 @@ expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(413.003, 395.272)
+collision_layer = 2
+collision_mask = 3
 JUMP_SPEED = -500.0
 GRAVITY = 25.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="TurretsSpawner" type="Node" parent="."]
 script = ExtResource("5")
 turret_scene = ExtResource("4")
 
 [node name="Floor" parent="." instance=ExtResource("6_11tax")]
+
+[node name="Floor2" parent="." instance=ExtResource("6_11tax")]
+position = Vector2(1200, 562)
+
+[node name="Floor3" parent="." instance=ExtResource("6_11tax")]
+position = Vector2(2000, 562)
+
+[node name="Cube" parent="." instance=ExtResource("7_pqd48")]
+
+[node name="Cube2" parent="." instance=ExtResource("7_pqd48")]
+position = Vector2(641, 343)
+
+[node name="Cube3" parent="." instance=ExtResource("7_pqd48")]
+position = Vector2(654, 272)

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Proyecto Godot - Clase 4"
+config/name="entrega-5-padron-angelo"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
@@ -46,6 +46,13 @@ jump={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="items"
+2d_physics/layer_4="enemies"
 
 [rendering]
 
