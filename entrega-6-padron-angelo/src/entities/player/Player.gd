@@ -11,9 +11,6 @@ onready var weapon: Node = $"%Weapon"
 onready var body_animations = $BodyAnimations
 onready var body_pivot = $BodyPivot
 
-
-
-
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.UP
 const SNAP_LENGHT: float = 32.0
@@ -91,8 +88,12 @@ func _physics_process(delta: float) -> void:
 
 func notify_hit() -> void:
 	print("I'm player and imma die")
-	call_deferred("_remove")
+	handle_death()
 
+func handle_death() -> void:
+	dead=true	
+	_play_animation("dying")
+	
 
 func _remove() -> void:
 	set_physics_process(false)

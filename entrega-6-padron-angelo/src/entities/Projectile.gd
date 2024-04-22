@@ -6,9 +6,9 @@ extends Node2D
 
 onready var lifetime_timer: Timer = $LifetimeTimer
 onready var hitbox: Area2D = $Hitbox
-onready var projectile_animations: AnimatedSprite = $ProjectileAnimations
+onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
-export (float) var VELOCITY: float = 800.0
+export (float) var VELOCITY: float = 150.0
 
 var direction: Vector2
 
@@ -32,7 +32,7 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2) ->
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
 	projectile_animations.play("fire_start")
-#	projectile_animations.queue("fire_loop")
+	projectile_animations.queue("fire_loop")
 
 
 func _physics_process(delta: float) -> void:
@@ -62,7 +62,3 @@ func _on_Hitbox_body_entered(body: Node) -> void:
 	if body.has_method("notify_hit"):
 		body.notify_hit()
 	remove()
-
-
-func _on_ProjectileAnimations_animation_finished():
-	hide()

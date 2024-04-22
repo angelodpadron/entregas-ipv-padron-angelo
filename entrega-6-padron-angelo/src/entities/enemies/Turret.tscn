@@ -1,10 +1,68 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/textures/enemies/golem/Golem_IdleA.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/enemies/Turret.gd" type="Script" id=2]
 [ext_resource path="res://src/entities/enemies/TurretProjectile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/entities/enemies/DetectionArea.gd" type="Script" id=4]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/enemies/golem/Golem_DeathB.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/enemies/golem/Golem_HitA.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 7 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 64, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -24,6 +82,16 @@ region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": false,
+"name": "dying",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "idle",
@@ -34,11 +102,11 @@ animations = [ {
 extents = Vector2( 7, 11.5 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 328.39
+radius = 324.395
 
 [node name="Turret" type="StaticBody2D"]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 3
 script = ExtResource( 2 )
 projectile_scene = ExtResource( 3 )
 
@@ -51,8 +119,9 @@ position = Vector2( 0, -15.0339 )
 [node name="Body" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -15 )
 frames = SubResource( 7 )
-animation = "idle"
-frame = 1
+animation = "dying"
+frame = 8
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, -11.5 )
@@ -65,6 +134,7 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 4 )
@@ -77,5 +147,6 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource( 2 )
 
+[connection signal="animation_finished" from="Body" to="." method="_on_Body_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_DetectionArea_body_exited"]

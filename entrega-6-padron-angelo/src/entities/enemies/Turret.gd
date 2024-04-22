@@ -27,6 +27,8 @@ func initialize(container, turret_pos, projectile_container) -> void:
 
 
 func fire() -> void:
+	if (dead):
+		return
 	if target != null:
 		var proj_instance = projectile_scene.instance()
 		if projectile_container == null:
@@ -48,6 +50,8 @@ func _physics_process(delta: float) -> void:
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
 func notify_hit() -> void:
 	print("I'm turret and imma die")
+	dead=true
+	_play_animation("dying")
 
 
 func _remove() -> void:
@@ -78,3 +82,8 @@ func _on_animation_finished() -> void:
 func _play_animation(animation: String) -> void:
 	if body_anim.frames.has_animation(animation):
 		body_anim.play(animation)
+
+
+func _on_Body_animation_finished():
+	if (dead):
+		_remove()

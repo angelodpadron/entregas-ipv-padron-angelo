@@ -336,15 +336,15 @@ format = 1
 tile_data = PoolIntArray( 6816269, 5, 0, 6881799, 7, 0, 7471610, 5, 0, 7602670, 1, 0, 7602702, 1, 0, 7864855, 1, 0, 8061332, 3, 0, 8192514, 7, 0, 8257889, 0, 0, 8323370, -1073741821, 0, 8389130, 1, 0, 8454438, 8, 0, 8454452, 7, 0, 8454492, 8, 0, 8585711, 5, 0, 8651134, 1, 0, 8782184, 1, 0, 8782195, 1, 0, 8847685, 7, 0, 8847756, 6, 0, 9044270, 6, 0, 9109817, 6, 0, 9240925, -1073741821, 0, 9371992, 8, 0, 9437516, 1, 0, 9503054, 6, 0, 9634230, 6, 0, 9830706, 3, 0, 9896291, 1, 0, 9896393, 1, 0, 10027414, 2, 0, 10289628, 7, 0, 10420550, 7, 0, 10617315, 1, 0, 10682646, -1073741817, 0, 10682763, 1, 0, 10682841, 6, 0, 10813841, 6, 0, 11075943, 5, 0, 11075959, 4, 0, 11338062, 1, 0, 11534733, 0, 0, 12255498, 7, 0, 12255596, 6, 0, 12517680, 7, 0, 12517713, 5, 0, 12583317, 1, 0, 13304108, 6, 0, 13697352, 7, 0, 13762884, -1073741820, 0, 14090548, 7, 0, 14811401, 8, 0, 15073558, 8, 0 )
 
 [node name="Ground" type="Node2D" parent="Environment"]
-visible = false
 
 [node name="Platform" parent="Environment/Ground" instance=ExtResource( 11 )]
-position = Vector2( 936, 971 )
+position = Vector2( 1748, 683 )
 
 [node name="Entities" type="Node2D" parent="Environment"]
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 7 )]
 position = Vector2( 941, 905 )
+H_SPEED_LIMIT = 200.0
 
 [node name="Camera" type="Camera2D" parent="Environment/Entities/Player"]
 current = true
@@ -357,10 +357,19 @@ turret_scene = ExtResource( 5 )
 extents = Vector2( 300, -350 )
 
 [node name="Turret" parent="Environment/Entities" instance=ExtResource( 5 )]
-position = Vector2( 1798, 434 )
+position = Vector2( 914, 477 )
 
 [node name="Turret2" parent="Environment/Entities" instance=ExtResource( 5 )]
-position = Vector2( 1128, 435 )
+position = Vector2( 877, 848 )
+
+[node name="Turret3" parent="Environment/Entities" instance=ExtResource( 5 )]
+position = Vector2( 1582, 448 )
+
+[node name="Turret4" parent="Environment/Entities" instance=ExtResource( 5 )]
+position = Vector2( 1211, 441 )
+
+[node name="Turret5" parent="Environment/Entities" instance=ExtResource( 5 )]
+position = Vector2( 1901, 524 )
 
 [node name="Objects" type="Node2D" parent="Environment"]
 
