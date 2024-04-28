@@ -277,6 +277,7 @@ state_id = "walk"
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )
 state_id = "jump"
+extra_jumps = 10
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource( 15 )
