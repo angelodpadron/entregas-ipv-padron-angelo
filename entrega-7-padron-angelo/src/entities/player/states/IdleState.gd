@@ -3,7 +3,7 @@ extends AbstractState
 
 # Al entrar se activa primero la animación "idle"
 func enter() -> void:
-	print("Current state: Idle")
+	print("player state: Idle")
 	character._play_animation("idle")
 
 

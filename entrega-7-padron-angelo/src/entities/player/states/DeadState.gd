@@ -5,7 +5,7 @@ extends AbstractState
 ## a ningun otro estado), vamos a procesar todo lo necesario
 ## en el enter
 func enter() -> void:
-	print("Current state: Dead")
+	print("player state: Dead")
 	character.emit_signal("dead")
 	character._play_animation("die")
 

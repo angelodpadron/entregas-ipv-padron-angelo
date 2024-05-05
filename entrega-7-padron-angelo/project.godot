@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AbstractState",
+"class": "AbstractEnemyState",
+"language": "GDScript",
+"path": "res://src/entities/enemies/states/AbstractEnemyState.gd"
+}, {
 "base": "Node",
 "class": "AbstractState",
 "language": "GDScript",
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://src/entities/player/Player.gd"
 } ]
 _global_script_class_icons={
+"AbstractEnemyState": "",
 "AbstractState": "",
 "AbstractStateMachine": "",
 "EnemyTurret": "",

@@ -3,7 +3,7 @@ extends AbstractState
 
 # Al entrar se activa primero la animación "walk"
 func enter() -> void:
-	print("Current state: Walk")
+	print("player state: Walk")
 	character._play_animation("walk")
 
 

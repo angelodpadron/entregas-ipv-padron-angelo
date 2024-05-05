@@ -9,7 +9,7 @@ func jump():
 	character._play_animation("jump")
 
 func enter() -> void:
-	print("Current state: Jump")
+	print("player state: Jump")
 	character.snap_vector = Vector2.ZERO
 	jump()
 	
